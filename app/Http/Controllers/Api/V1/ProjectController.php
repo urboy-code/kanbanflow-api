@@ -53,7 +53,7 @@ class ProjectController extends Controller
         if (request()->user()->id !== $project->user_id){
             return response()->json(['message' => 'Unauthorized'], 403);
         }
-
+        
         // Update the project
         $project->update($request->validated());
 

@@ -1,8 +1,21 @@
 <?php
 
+use App\Http\Controllers\Api\v1\AuthController;
+use App\Http\Controllers\Api\V1\ProjectController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/user', function (Request $request) {
     return $request->user();
 })->middleware('auth:sanctum');
+
+Route::post('/v1/register', [AuthController::class, 'register']);
+Route::post('/v1/login', [AuthController::class, 'login']);
+
+// NOTE FOR THIS ROUTE
+// GET /api/v1/projects
+// POST /api/v1/projects
+// GET /api/v1/projects/{project}
+// PUT /api/v1/projects/{project}
+// DELETE /api/v1/projects/{project}
+Route::apiResource('/v1/projects', ProjectController::class)->middleware('auth:sanctum');
