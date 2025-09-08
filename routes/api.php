@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Api\v1\AuthController;
 use App\Http\Controllers\Api\V1\ProjectController;
+use App\Http\Controllers\Api\V1\TaskController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -19,3 +20,11 @@ Route::post('/v1/login', [AuthController::class, 'login']);
 // PUT /api/v1/projects/{project}
 // DELETE /api/v1/projects/{project}
 Route::apiResource('/v1/projects', ProjectController::class)->middleware('auth:sanctum');
+
+// NOTE FOR THIS ROUTE
+// GET /api/v1/projects/{project}/tasks
+// POST /api/v1/projects/{project}/tasks
+// GET /api/v1/projects/{project}/tasks/{task}
+// PUT /api/v1/projects/{project}/tasks/{task}
+// DELETE /api/v1/projects/{project}/tasks/{task}
+Route::apiResource('projects.task', TaskController::class)->scoped()->middleware('auth:sanctum');
