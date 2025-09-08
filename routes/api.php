@@ -27,4 +27,4 @@ Route::apiResource('/v1/projects', ProjectController::class)->middleware('auth:s
 // GET /api/v1/projects/{project}/tasks/{task}
 // PUT /api/v1/projects/{project}/tasks/{task}
 // DELETE /api/v1/projects/{project}/tasks/{task}
-Route::apiResource('projects.task', TaskController::class)->scoped()->middleware('auth:sanctum');
+Route::apiResource('/v1/projects.tasks', TaskController::class)->scoped()->middleware('auth:sanctum');
