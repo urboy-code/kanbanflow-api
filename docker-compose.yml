@@ -1,0 +1,15 @@
+services:
+  postgres:
+    image: postgres:15-alpine
+    container_name: kanbanflow_db
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_DB=kanbanflow
+    ports:
+      - "5432:5432"
+    volumes:
+      - kanbanflow_data:/var/lib/postgresql/data
+
+volumes:
+  kanbanflow_data:
